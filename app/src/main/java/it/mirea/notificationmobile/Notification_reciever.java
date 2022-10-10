@@ -25,13 +25,7 @@ public class Notification_reciever extends BroadcastReceiver {
         DatabaseHelper mDatabaseHelper = new DatabaseHelper(context);
         Cursor data = mDatabaseHelper.getName();
         String name = data.getString(1);
-//        double total = 0;
-//        OffsetDateTime offset = OffsetDateTime.now();
-//        while (data.moveToNext()) {
-//            if (data.getInt(4) == offset.getDayOfMonth()) {
-//                total += data.getFloat(3);
-//            }
-//        }
+
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
