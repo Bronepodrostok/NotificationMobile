@@ -54,11 +54,22 @@ public class fragment_add extends Fragment {
                 String newEntryInfo = infoTextEdit.getText().toString();
                 String newEntryDate = dateTextEdit.getText().toString();
                 String newEntryMonth = monthTextEdit.getText().toString();
-                AddData(newEntryName, newEntryInfo, Integer.parseInt(newEntryDate), Integer.parseInt(newEntryMonth));
-                nameTextEdit.setText("");
-                infoTextEdit.setText("");
-                monthTextEdit.setText("");
-                dateTextEdit.setText("");
+                if (newEntryName.equals("")) {
+                    toastMessage("Type the name!");
+                } else {
+                    boolean correctDate =
+                            newEntryDate.matches("\\d+(?:\\.\\d+)?") &&
+                            newEntryMonth.matches("\\d+(?:\\.\\d+)?") &&
+                            Integer.parseInt(newEntryDate) > 0 && Integer.parseInt(newEntryDate) < 32 &&
+                            Integer.parseInt(newEntryMonth) > 0 && Integer.parseInt(newEntryMonth) < 13;
+                    if (correctDate) {
+                        AddData(newEntryName, newEntryInfo, Integer.parseInt(newEntryDate), Integer.parseInt(newEntryMonth));
+                        nameTextEdit.setText("");
+                        infoTextEdit.setText("");
+                        monthTextEdit.setText("");
+                        dateTextEdit.setText("");
+                    } else toastMessage("Wrong date of birth");
+                }
             }
         });
     }
