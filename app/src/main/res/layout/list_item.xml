@@ -35,10 +35,18 @@
             android:text="remove" />
     </LinearLayout>
 
+        <TextView
+            android:id="@+id/infoView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Описание: "
+            android:textColor="#F6F1FC" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,8 +58,14 @@
             android:id="@+id/dateView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Date"
+            android:textColor="#F6F1FC" />
+
+        <TextView
+            android:id="@+id/monthView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Month"
             android:textColor="#F6F1FC" />
     </LinearLayout>
 

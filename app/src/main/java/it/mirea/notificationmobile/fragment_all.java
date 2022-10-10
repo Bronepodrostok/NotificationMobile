@@ -44,7 +44,7 @@ public class fragment_all extends Fragment {
         Cursor data = mDatabaseHelper.getData();
         ArrayList<Subscription> list = new ArrayList<>();
         while (data.moveToNext()) {
-            Subscription sub = new Subscription(data.getInt(0), data.getString(1), /*data.getString(2), data.getFloat(3),*/ data.getInt(4));
+            Subscription sub = new Subscription(data.getInt(0), data.getString(1), data.getString(2), data.getInt(3), data.getInt(4));
             list.add(sub);
         }
         SubListAdapter adapter = new SubListAdapter(getContext(), R.layout.list_item, list, listView);
