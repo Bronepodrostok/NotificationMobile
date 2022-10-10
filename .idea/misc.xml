@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sadch/AndroidStudioProjects/NotificationMobile/app/src/main/res/drawable/ic_baseline_accessible_24.xml" value="0.1" />
         <entry key="..\:/Users/sadch/AndroidStudioProjects/NotificationMobile/app/src/main/res/drawable/plus.xml" value="0.1" />
         <entry key="..\:/Users/sadch/AndroidStudioProjects/NotificationMobile/app/src/main/res/font/roboto_condensed_bold.xml" value="0.1" />
+        <entry key="..\:/Users/sadch/AndroidStudioProjects/NotificationMobile/app/src/main/res/layout/fragment_add.xml" value="0.1" />
+        <entry key="..\:/Users/sadch/AndroidStudioProjects/NotificationMobile/app/src/main/res/layout/fragment_all.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/sadch/AndroidStudioProjects/NotificationMobile/app/src/main/res/layout/list_item.xml" value="0.1" />
       </map>
     </option>

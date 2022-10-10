@@ -23,24 +23,23 @@ public class Notification_reciever extends BroadcastReceiver {
         Log.d("Pog", "AlarmRecived");
 
         DatabaseHelper mDatabaseHelper = new DatabaseHelper(context);
-        Cursor data = mDatabaseHelper.getData();
-        double total = 0;
-        OffsetDateTime offset = OffsetDateTime.now();
-        while (data.moveToNext()) {
-            if (data.getInt(4) == offset.getDayOfMonth()) {
-                total += data.getFloat(3);
-            }
-
-
-        }
+        Cursor data = mDatabaseHelper.getName();
+        String name = data.getString(1);
+//        double total = 0;
+//        OffsetDateTime offset = OffsetDateTime.now();
+//        while (data.moveToNext()) {
+//            if (data.getInt(4) == offset.getDayOfMonth()) {
+//                total += data.getFloat(3);
+//            }
+//        }
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
 
         Notification notification = new NotificationCompat.Builder(context, MainActivity.CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_baseline_accessible_24)
-                .setContentText("Сумма:" + Double.toString(total))
-                .setContentTitle("Списание средств")
+                .setContentText("Твой друг " + name + " сегодня празднует день рождения!")
+                .setContentTitle("День рождения")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_REMINDER)
                 .build();

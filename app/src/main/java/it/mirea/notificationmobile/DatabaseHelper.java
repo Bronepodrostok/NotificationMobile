@@ -9,6 +9,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.time.OffsetDateTime;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "Database";
@@ -16,9 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "notification_table";
     private static final String COL1 = "ID";
     private static final String COL2 = "Info";
-    private static final String COL3 = "Description";
-    private static final String COL4 = "Price";
-    private static final String COL5 = "Date";
+    private static final String COL3 = "Date";
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -30,9 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableCommand = "CREATE TABLE " + TABLE_NAME + " ( " +
                 COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL2 + " TEXT, " +
-                COL3 + "  TEXT, " +
-                COL4 + " REAL, " +
-                COL5 + " INT  )";
+                COL3 + " INT )";
         sqLiteDatabase.execSQL(createTableCommand);
     }
 
@@ -42,11 +40,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean addData(String info, int day ) {
+    public boolean addData(String name, int day ) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, info);
-        contentValues.put(COL5, day);
+        contentValues.put(COL2, name);
+        contentValues.put(COL3, day);
 
 
         long result = db.insert(TABLE_NAME, null, contentValues);
@@ -61,6 +59,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getName() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        OffsetDateTime today = OffsetDateTime.now();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE Date=" + today.getDayOfMonth();
         Cursor data = db.rawQuery(query, null);
         return data;
     }
