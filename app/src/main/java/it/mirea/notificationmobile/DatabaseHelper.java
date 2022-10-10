@@ -18,7 +18,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "notification_table";
     private static final String COL1 = "ID";
     private static final String COL2 = "Info";
-    private static final String COL3 = "Date";
+    private static final String COL3 = "Description";
+    private static final String COL4 = "Date";
+    private static final String COL5 = "Month";
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -30,7 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableCommand = "CREATE TABLE " + TABLE_NAME + " ( " +
                 COL1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL2 + " TEXT, " +
-                COL3 + " INT )";
+                COL3 + " TEXT, " +
+                COL4 + " INT, " +
+                COL5 + " INT  )";
         sqLiteDatabase.execSQL(createTableCommand);
     }
 
@@ -40,11 +44,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean addData(String name, int day ) {
+    public boolean addData(String name, String description, int day, int month ) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, name);
-        contentValues.put(COL3, day);
+        contentValues.put(COL3, description);
+        contentValues.put(COL4, day);
+        contentValues.put(COL5, month);
 
 
         long result = db.insert(TABLE_NAME, null, contentValues);
