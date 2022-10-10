@@ -37,10 +37,37 @@
         android:hint="Имя друга" />
 
     <EditText
-        android:id="@+id/dateTe"
+        android:id="@+id/infoTe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="День рождения"/>
+        android:hint="Описание подарка"
+        android:minHeight="48dp" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/dateTe"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="День рождения" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/dateTe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="День"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/monthTe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Месяц рождения"
+                android:minHeight="48dp" />
+        </LinearLayout>
 
     <Button
         android:id="@+id/addToDbButton"

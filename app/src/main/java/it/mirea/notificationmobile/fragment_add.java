@@ -22,7 +22,9 @@ public class fragment_add extends Fragment {
     DatabaseHelper mDatabaseHelper;
 
     EditText nameTextEdit;
+    EditText infoTextEdit;
     EditText dateTextEdit;
+    EditText monthTextEdit;
     Button button;
 
     @Override
@@ -41,23 +43,29 @@ public class fragment_add extends Fragment {
         Log.d("fragment_add","created");
         mDatabaseHelper = new DatabaseHelper(this.getContext());
         nameTextEdit = getView().findViewById(R.id.nameTe);
+        infoTextEdit = getView().findViewById(R.id.infoTe);
         dateTextEdit = getView().findViewById(R.id.dateTe);
+        monthTextEdit = getView().findViewById(R.id.monthTe);
         button = getView().findViewById(R.id.addToDbButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String newEntryName = nameTextEdit.getText().toString();
+                String newEntryInfo = infoTextEdit.getText().toString();
                 String newEntryDate = dateTextEdit.getText().toString();
-                AddData(newEntryName, Integer.parseInt(newEntryDate));
+                String newEntryMonth = monthTextEdit.getText().toString();
+                AddData(newEntryName, newEntryInfo, Integer.parseInt(newEntryDate), Integer.parseInt(newEntryMonth));
                 nameTextEdit.setText("");
+                infoTextEdit.setText("");
+                monthTextEdit.setText("");
                 dateTextEdit.setText("");
             }
         });
     }
 
 
-    public void AddData(String name, /*String description, Float price,*/ int day) {
-        boolean insertData = mDatabaseHelper.addData(name, /*description, price,*/ day);
+    public void AddData(String name, String description, int day, int month) {
+        boolean insertData = mDatabaseHelper.addData(name, description, day, month);
 
         if (insertData) {
             toastMessage("Data inserted");
